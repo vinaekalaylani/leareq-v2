@@ -4,6 +4,7 @@ import {
   SET_USER,
   SET_LEVEL,
   SET_INITIAL,
+  SET_EVENT,
   SET_LEAVE,
   SET_LEAVES,
   SET_HISTORY,
@@ -11,6 +12,7 @@ import {
   SET_IS_LOADING,
 } from "./actionType";
 import axios from "../apis/server.js";
+import moment from "moment";
 
 export function setUserLogin(payload) {
   return {
@@ -43,6 +45,13 @@ export function setLevel(payload) {
 export function setIniial(payload) {
   return {
     type: SET_INITIAL,
+    payload,
+  };
+}
+
+export function setEvent(payload) {
+  return {
+    type: SET_EVENT,
     payload,
   };
 }
@@ -167,6 +176,43 @@ export function getUserLogin() {
   };
 }
 
+// done
+export function getEvent() {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "GET",
+        url: "/user/user-login",
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(({ data }) => {
+          let list = []
+          data.Leaves.map((el) => {
+            const mstart = moment(new Date(el.dateFrom));
+            const mend = moment(new Date(el.dateTo)).add(1, 'day');;
+
+            while (mstart.format('DD-MM-YYYY') !== mend.format('DD-MM-YYYY')) {
+              let obj = {};
+              obj.date = mstart.format('YYYY-MM-DD')
+              obj.status = el.status
+              mstart.add(1, 'day')
+              list.push(obj)
+            }
+          })
+          dispatch(setEvent(list));
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
 export function getUser(params) {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
@@ -200,6 +246,105 @@ export function getListUser({ fullName, deleted }) {
       })
         .then(({ data }) => {
           dispatch(setUsers(data));
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function apply(payload) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "POST",
+        url: "/leave/create",
+        data: payload,
+        headers: { access_token: localStorage.getItem("access_token") }
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function getLeaves() {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "GET",
+        url: "/leave/list",
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(({ data }) => {
+          dispatch(setLeave(data[0]))
+          dispatch(setLeaves(data));
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function getLeave(id) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "GET",
+        url: `/leave/list/${id}`,
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(({ data }) => {
+          dispatch(setLeave(data));
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+export function updateStatus({ status, id }) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "PATCH",
+        url: `/leave/update/${id}`,
+        headers: { access_token: localStorage.getItem("access_token") },
+        data: {
+          status
+        }
+      })
+        .then(({data}) => {
+          console.log(data)
           resolve();
         })
         .catch((error) => {

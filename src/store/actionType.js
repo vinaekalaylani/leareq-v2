@@ -1,4 +1,5 @@
 export const SET_USER_LOGIN = 'setUserLogin'
+export const SET_EVENT = 'setEvent'
 export const SET_USER = 'setUser'
 export const SET_USERS = 'setUsers'
 export const SET_LEVEL = 'setLevel'

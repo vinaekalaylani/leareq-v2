@@ -5,11 +5,11 @@ export default function CalendarComp({ leaves }) {
   const setClass = (date) => {
     const dateobj =
       leaves &&
-      leaves.find((x) => {
+      leaves.find((el) => {
         return (
-          date.getDay() === new Date(x.dateFrom).getDay() &&
-          date.getMonth() === new Date(x.dateFrom).getMonth() &&
-          date.getDate() === new Date(x.dateFrom).getDate()
+          date.getDay() === new Date(el.date).getDay() &&
+          date.getMonth() === new Date(el.date).getMonth() &&
+          date.getDate() === new Date(el.date).getDate()
         );
       });
 

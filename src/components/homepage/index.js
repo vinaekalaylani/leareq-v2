@@ -1,9 +1,10 @@
-import { Image } from "react-bootstrap"
 import { Link } from "react-router-dom"
+
 import CalendarComp from "./calendar"
 import Table from "./table"
 
-export default function Hompage({ user }) {
+export default function Hompage({ user, event }) {
+
   return (
     <div className="main-content">
       {/* <!-- Navbar --> */}
@@ -15,15 +16,22 @@ export default function Hompage({ user }) {
       </nav>
       {/* <!-- End Navbar --> */}
       {/* <!-- Header --> */}
-      <div className="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-        <div className="container-fluid">
-          <div className="header-body">
+      <div className="header pb-8 pt-5 pt-md-8">
+        {/* <!-- Mask --!> */}
+        <span className="mask bg-gradient-default opacity-8"></span>
+        {/* <!-- Header container --> */}
+        <div className="container-fluid d-flex align-items-center mt--4">
+          <div className="row">
+            <div className="col-10">
+              <h1 className="display-2 text-white">Hello {user.fullName}</h1>
+              <p className="text-white mt-0 mb-2">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+            </div>
           </div>
         </div>
       </div>
       <div className="container-fluid mt--7">
         <div className="row">
-          <div className="col-xl-8 mb-5 mb-xl-0">
+          <div className="col-8 mb-5 mb-xl-0">
             <div className="card shadow">
               <div className="card-header border-0">
                 <h3 className="mb-0">Leave Request</h3>
@@ -35,30 +43,40 @@ export default function Hompage({ user }) {
               </div>
             </div>
           </div>
-          <div className="col-xl-4">
-            <div className="card card-profile shadow">
-              <div className="d-flex justify-content-center align-items-center" style={{ height: "25rem"}}>
-                <CalendarComp leaves={user.Leaves} />
-              </div>
-              {/* <div className="row justify-content-center">
-                <div className="col-lg-3 order-lg-2">
-                  <div className="card-profile-image">
-                    <Link href="#">
-                      <Image src="../assets/img/theme/team-4-800x800.jpg" className="rounded-circle" />
-                    </Link>
+          <div className="col-3">
+            <div className="card card-profile shadow mb-4">
+              <div className="card-body row pt-0 pt-md-3">
+                <div className="d-flex align-items-center mb-2">
+                  <div className="icon icon-shape bg-blue text-white rounded-circle shadow">
+                    <i className="fas fa-user"></i>
+                  </div>
+                  <div className="ms-3">
+                    <span>{user.fullName}</span>
+                    <h5 className="text-muted">{user.email}</h5>
+                  </div>
+                </div>
+                <div className="col-xl-6">
+                  <div className="h5" style={{ color: "#5C7893" }}>
+                    <i className="ni business_briefcase-24 mt-4"></i>Job Title<br />
+                    {user.reportingManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>Reporting Manager<br /></>)}
+                    {user.aditionalManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>Aditional Manager<br /></>)}
+                    <i className="ni business_briefcase-24 mt-4"></i>Leave<br />
+                  </div>
+                </div>
+                <div className="col-xl-6 text-end">
+                  <div className="h5">
+                    <i className="ni business_briefcase-24 mt-4"></i>{user.position}<br />
+                    {user.reportingManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>{user.reportingManager}<br /></>)}
+                    {user.aditionalManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>{user.aditionalManager}<br /></>)}
+                    <i className="ni business_briefcase-24 mt-4"></i>{user.leaveAvailable} Days Available<br />
                   </div>
                 </div>
               </div>
-              <div className="card-body pt-0 pt-md-4">
-                <div className="text-center mt-8">
-                  <h3>{user.fullName}</h3>
-                  <div className="h5 font-weight-300">{user.email}</div>
-                  <div>{user.position}</div>
-                  <hr className="my-4" />
-                  <p>Reporting Manager — {user.reportingManager}</p>
-                  <p>Aditional Manager — {user.aditionalManager}</p>
-                </div>
-              </div> */}
+            </div>
+            <div className="card shadow">
+              <div className="d-flex justify-content-center align-items-center my-3">
+                <CalendarComp leaves={event} />
+              </div>
             </div>
           </div>
         </div>

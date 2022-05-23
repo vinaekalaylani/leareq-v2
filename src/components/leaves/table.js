@@ -1,9 +1,21 @@
 import DataTable from 'react-data-table-component'
+import { useDispatch } from 'react-redux'
+import { getLeave } from '../../store/action';
+
 export default function Table({ leaves }) {
+  const dispatch = useDispatch()
   const columns = [
     {
-      name: 'Date From',
+      name: 'Name',
       maxWidth: '200px',
+      selector: row => row.User.fullName,
+      style: {
+        fontSize: '14px',
+      }
+    },
+    {
+      name: 'Date From',
+      maxWidth: '150px',
       selector: row => row.dateFrom,
       style: {
         fontSize: '14px',
@@ -11,7 +23,7 @@ export default function Table({ leaves }) {
     },
     {
       name: 'Date To',
-      maxWidth: '200px',
+      maxWidth: '150px',
       selector: row => row.dateTo,
       style: {
         fontSize: '14px',
@@ -19,7 +31,7 @@ export default function Table({ leaves }) {
     },
     {
       name: 'Type',
-      maxWidth: '150px',
+      maxWidth: '20px',
       selector: row => row.type,
       sortable: true,
       style: {
@@ -28,6 +40,7 @@ export default function Table({ leaves }) {
     },
     {
       name: 'Total Days',
+      maxWidth: '20px',
       selector: row => row.totalDays,
       style: {
         fontSize: '14px',
@@ -35,9 +48,9 @@ export default function Table({ leaves }) {
     },
     {
       name: 'Status',
-      maxWidth: '200px',
+      maxWidth: '150px',
       selector: row => (
-        <span className="badge badge-dot" style={{ color: "black"}}>
+        <span className="badge badge-dot" style={{ color: "black" }}>
           {row.status === 0 ? (
             <div><i className="bg-info"></i> Pending</div>
           ) : (row.status === 1 ? (
@@ -60,6 +73,10 @@ export default function Table({ leaves }) {
     }
   ]
 
+  const handleClick = state => {
+    dispatch(getLeave(state.id))
+  };
+
   return (
     <div className="pt-2">
       <DataTable
@@ -67,10 +84,11 @@ export default function Table({ leaves }) {
         data={leaves}
         noHeader
         defaultSortField="id"
+        onRowClicked={handleClick}
         defaultSortAsc={false}
         pagination
         fixedHeader
-        fixedHeaderScrollHeight="400px"
+        fixedHeaderScrollHeight="550px"
         highlightOnHover
       />
     </div>

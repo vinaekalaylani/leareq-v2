@@ -1,21 +1,24 @@
-import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+
+import { getEvent, getUserLogin } from '../store/action'
 import Hompage from '../components/homepage'
 import Sidebar from '../components/sidebar'
-import { getUserLogin } from '../store/action'
 
 export default function Dashboard() {
   const { userLogin } = useSelector(state => state.userReducer)
+  const { event } = useSelector(state => state.leaveReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getUserLogin()) // eslint-disable-next-line
+    dispatch(getEvent()) // eslint-disable-next-line
   }, [])
 
   return (
     <div>
       <Sidebar/>
-      <Hompage user={userLogin}/>
+      <Hompage user={userLogin} event={event}/>
     </div>
   )
 }

@@ -43,7 +43,6 @@ export default function Sidebar() {
               </Link>
             </li>
           </ul>
-          <hr className="my-3"/>
         </div>
       </div>
     </nav>

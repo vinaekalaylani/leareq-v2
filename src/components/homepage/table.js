@@ -38,7 +38,7 @@ export default function Table({ leaves }) {
       maxWidth: '200px',
       selector: row => (
         <span className="badge badge-dot" style={{ color: "black"}}>
-          {row.status === '0' ? (
+          {row.status === 0 ? (
             <div><i className="bg-info"></i> Pending</div>
           ) : (row.status === 1 ? (
             <div><i className="bg-success"></i> Approved</div>

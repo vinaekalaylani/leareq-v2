@@ -10,7 +10,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     dispatch(getUserLogin()) // eslint-disable-next-line
-  }, []) 
+  }, [])
 
   return (
     <div>

@@ -1,5 +1,6 @@
 import { Image } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import CalendarComp from "./calendar"
 import Table from "./table"
 
 export default function Hompage({ user }) {
@@ -9,7 +10,7 @@ export default function Hompage({ user }) {
       <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div className="container-fluid">
           {/* <!-- Brand --> */}
-          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="./index.html">Dashboard</Link>
+          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard</Link>
         </div>
       </nav>
       {/* <!-- End Navbar --> */}
@@ -34,9 +35,12 @@ export default function Hompage({ user }) {
               </div>
             </div>
           </div>
-          <div className="col-xl-3">
+          <div className="col-xl-4">
             <div className="card card-profile shadow">
-              <div className="row justify-content-center">
+              <div className="d-flex justify-content-center align-items-center" style={{ height: "25rem"}}>
+                <CalendarComp leaves={user.Leaves} />
+              </div>
+              {/* <div className="row justify-content-center">
                 <div className="col-lg-3 order-lg-2">
                   <div className="card-profile-image">
                     <Link href="#">
@@ -54,7 +58,7 @@ export default function Hompage({ user }) {
                   <p>Reporting Manager — {user.reportingManager}</p>
                   <p>Aditional Manager — {user.aditionalManager}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
+
 import DetailComp from "./detail"
 import Table from "./table"
 
 export default function LeavesComp({ leaves, leave, level }) {
+
   return (
     <div className="main-content">
       {/* <!-- Navbar --> */}

@@ -52,7 +52,7 @@ export default function Table({ leaves }) {
       selector: row => (
         <span className="badge badge-dot" style={{ color: "black" }}>
           {row.status === 0 ? (
-            <div><i className="bg-info"></i> Pending</div>
+            <div><i className="bg-blue"></i> Pending</div>
           ) : (row.status === 1 ? (
             <div><i className="bg-success"></i> Approved</div>
           ) : (

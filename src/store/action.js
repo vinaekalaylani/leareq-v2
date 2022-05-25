@@ -213,12 +213,13 @@ export function getEvent() {
   };
 }
 
-export function getUser(params) {
+// done
+export function getUser(id) {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
       axios({
         method: "GET",
-        url: `/user/detail?id=${params}`,
+        url: `/user/detail/${id}`,
         headers: { access_token: localStorage.getItem("access_token") },
       })
         .then(({ data }) => {
@@ -236,6 +237,7 @@ export function getUser(params) {
   };
 }
 
+// done
 export function getUsers({ fullName, deleted }) {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
@@ -245,7 +247,79 @@ export function getUsers({ fullName, deleted }) {
         headers: { access_token: localStorage.getItem("access_token") },
       })
         .then(({ data }) => {
+          dispatch(setUser(data[0]))
           dispatch(setUsers(data));
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function createUser(data) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "POST",
+        url: "/user/create",
+        data: data,
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function updateUser({data, id}) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "PUT",
+        url: `/user/update/${id}`,
+        data: data,
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function deleteUser(id) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "PATCH",
+        url: `/user/delete/${id}`,
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(() => {
           resolve();
         })
         .catch((error) => {

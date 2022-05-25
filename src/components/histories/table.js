@@ -14,14 +14,6 @@ export default function Table({ history }) {
       }
     },
     {
-      name: 'isDeleted',
-      maxWidth: '150px',
-      selector: row => (row.User.isDeleted ? "True" : "False"),
-      style: {
-        fontSize: '14px',
-      }
-    },
-    {
       name: 'Date From',
       maxWidth: '150px',
       selector: row => row.dateFrom,
@@ -60,7 +52,7 @@ export default function Table({ history }) {
       selector: row => (
         <span className="badge badge-dot" style={{ color: "black" }}>
           {row.status === 0 ? (
-            <div><i className="bg-info"></i> Pending</div>
+            <div><i className="bg-blue"></i> Pending</div>
           ) : (row.status === 1 ? (
             <div><i className="bg-success"></i> Approved</div>
           ) : (

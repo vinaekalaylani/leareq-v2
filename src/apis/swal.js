@@ -5,6 +5,7 @@ function alertSuccess(message) {
     title: "Yash!",
     text: message,
     icon: "success",
+    showConfirmButton: false,
   };
 
   Swal.fire(data);

@@ -110,18 +110,3 @@
 abbr[title] {
   text-decoration: none;
 }
-
-.rejected {
-  background: #DF6A6A;
-  color: white;
-}
-
-.pending {
-  background: #8FBDD3;
-  color: white;
-}
-
-.approved {
-  background: #BEDBBB;
-  color: white;
-}

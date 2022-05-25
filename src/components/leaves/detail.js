@@ -20,7 +20,7 @@ export default function DetailComp({ leave, level }) {
 
   return (
     <div className="card shadow mb-4">
-      <div className="card-body row ms-1" style={{fontSize: "14px"}}>
+      <div className="card-body row ms-1" style={{ fontSize: "14px" }}>
         <div className="row d-flex align-items-center">
           <Form.Label className="col-5">Name</Form.Label>
           <Form.Control
@@ -109,18 +109,22 @@ export default function DetailComp({ leave, level }) {
             value={leave?.reason || ""}
           />
         </div>
-        <div className="row mt-2 d-flex align-items-center">
-          <Form.Label className="col-5 mt-1" style={{marginRight: "-14px"}}>Status</Form.Label>
-          {leave.status === 0 ? (
-            <h2 className="col-2"><span className="badge badge-primary">Pending</span></h2>
-          ) : (leave.status === 1 ? (
-            <h2 className="col-2"><span className="badge badge-success">Approved</span></h2>
-          ) : (
-            <h2 className="col-2"><span className="badge badge-danger">Rejected</span></h2>
+        {
+          leave && (
+            <div className="row mt-2 d-flex align-items-center">
+              <Form.Label className="col-5 mt-1" style={{ marginRight: "-14px" }}>Status</Form.Label>
+              {leave.status === 0 ? (
+                <h2 className="col-2"><span className="badge badge-primary">Pending</span></h2>
+              ) : (leave.status === 1 ? (
+                <h2 className="col-2"><span className="badge badge-success">Approved</span></h2>
+              ) : (
+                <h2 className="col-2"><span className="badge badge-danger">Rejected</span></h2>
+              )
+              )}
+            </div>
           )
-          )}
-        </div>
-        {leave.status === 0 && level === "1" && (
+        }
+        {leave && leave.status === 0 && level === "1" && (
           <div className="row d-flex justify-content-center" style={{ marginTop: "20px" }}>
             <div className="col-3">
               <Button className="btn d-flex justify-content-center align-items-center bg-blue"

@@ -43,7 +43,7 @@ export default function HistoriesComp({ history, type, status, deleted, year, se
       <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div className="container-fluid">
           {/* <!-- Brand --> */}
-          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard</Link>
+          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard / History</Link>
         </div>
       </nav>
       {/* <!-- End Navbar --> */}

@@ -45,7 +45,7 @@ export default function Hompage({ user, event }) {
           </div>
           <div className="col-3">
             <div className="card card-profile shadow mb-4">
-              <div className="card-body row pt-0 pt-md-3">
+              <div className="card-body row pt-0 pt-md-3 d-flex justify-content-center">
                 <div className="d-flex align-items-center mb-2">
                   <div className="icon icon-shape bg-blue text-white rounded-circle shadow">
                     <i className="fas fa-user"></i>

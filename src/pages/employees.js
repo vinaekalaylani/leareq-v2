@@ -7,8 +7,8 @@ import Sidebar from "../components/sidebar";
 
 export default function Employees () {
   const [fullName, setFullName] = useState("")
-  const [deleted, setDeleted] = useState("")
-  const { users } = useSelector(state => state.userReducer)
+  const [deleted, setDeleted] = useState(false)
+  const { users, user } = useSelector(state => state.userReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function Employees () {
   return (
     <div className="d-xl-block d-none">
       <Sidebar/>
-      <EmployeesComp users={users} fullName={fullName} deleted={deleted} setFullName={setFullName} setDeleted={setDeleted}/>
+      <EmployeesComp users={users} user={user} fullName={fullName} deleted={deleted} setFullName={setFullName} setDeleted={setDeleted}/>
     </div>
   )
 }

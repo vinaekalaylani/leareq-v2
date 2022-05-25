@@ -15,11 +15,11 @@ export default function CalendarComp({ leaves }) {
 
     if (dateobj) {
       if (dateobj.status === 0) {
-        return "pending";
+        return "bg-blue text-white";
       } else if (dateobj.status === 1) {
-        return "approved";
+        return "bg-success text-white";
       } else if (dateobj.status === 2) {
-        return "rejected";
+        return "bg-red text-white";
       }
     } else {
       return "";

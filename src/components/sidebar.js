@@ -1,4 +1,3 @@
-import { Image } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 export default function Sidebar() {
@@ -10,8 +9,8 @@ export default function Sidebar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         {/* <!-- Brand --> */}
-        <Link className="navbar-brand pt-0" to="/">
-          <Image src="./assets/img/brand/blue.png" className="navbar-brand-img" alt="..." />
+        <Link className="navbar-brand" to="/">
+          <div className="m-0" style={{ fontWeight: "bold", color: "#5e72e4", fontSize: "35px"}}>LEAREQ</div>
         </Link>
         {/* <!-- Collapse --> */}
         <div className="collapse navbar-collapse" id="sidenav-collapse-main">

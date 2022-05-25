@@ -16,7 +16,7 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div>
+    <div className="d-xl-block d-none">
       <Sidebar/>
       <Hompage user={userLogin} event={event}/>
     </div>

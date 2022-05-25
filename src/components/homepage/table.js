@@ -70,7 +70,7 @@ export default function Table({ leaves }) {
         defaultSortAsc={false}
         pagination
         fixedHeader
-        fixedHeaderScrollHeight="400px"
+        fixedHeaderScrollHeight="500px"
         highlightOnHover
       />
     </div>

@@ -46,13 +46,13 @@ export default function FormComp({ user }) {
   };
 
   return (
-    <div class="card shadow">
-      <div class="card-header border-0">
-        <div class="align-items-center">
-          <h3 class="mb-0">Apply Leave</h3>
+    <div className="card shadow">
+      <div className="card-header border-0">
+        <div className="align-items-center">
+          <h3 className="mb-0">Apply Leave</h3>
         </div>
       </div>
-      <div class="card-body">
+      <div className="card-body">
         <Form onSubmit={handleApply}>
           <Row className="mb-3">
             <Col>

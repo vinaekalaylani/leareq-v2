@@ -16,7 +16,7 @@ export default function Leaves () {
   }, [])
 
   return (
-    <div>
+    <div className="d-xl-block d-none">
       <Sidebar/>
       <LeavesComp leaves={leaves} leave={leave} level={level}/>
     </div>

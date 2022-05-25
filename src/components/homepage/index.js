@@ -55,20 +55,40 @@ export default function Hompage({ user, event }) {
                     <h5 className="text-muted">{user.email}</h5>
                   </div>
                 </div>
-                <div className="col-xl-6">
-                  <div className="h5" style={{ color: "#5C7893" }}>
+                <div className="h5 row">
+                  <div className="col-xl-6" style={{ color: "#5C7893" }}>
                     <i className="ni business_briefcase-24 mt-4"></i>Job Title<br />
-                    {user.reportingManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>Reporting Manager<br /></>)}
-                    {user.aditionalManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>Aditional Manager<br /></>)}
-                    <i className="ni business_briefcase-24 mt-4"></i>Leave<br />
+                  </div>
+                  <div className="col-xl-6 text-end">
+                    <i className="ni business_briefcase-24 mt-4"></i>{user.position}<br />
                   </div>
                 </div>
-                <div className="col-xl-6 text-end">
-                  <div className="h5">
-                    <i className="ni business_briefcase-24 mt-4"></i>{user.position}<br />
-                    {user.reportingManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>{user.reportingManager}<br /></>)}
-                    {user.aditionalManager !== "" && (<><i className="ni business_briefcase-24 mt-4"></i>{user.aditionalManager}<br /></>)}
-                    <i className="ni business_briefcase-24 mt-4"></i>{user.leaveAvailable} Days Available<br />
+                {user.reportingManager !== "" && (
+                  <div className="h5 row">
+                    <div className="col-xl-6" style={{ color: "#5C7893" }}>
+                      <i className="ni business_briefcase-24 mt-2"></i>Reporting Manager<br />
+                    </div>
+                    <div className="col-xl-6 text-end">
+                      <i className="ni business_briefcase-24 mt-2"></i>{user.reportingManager}<br />
+                    </div>
+                  </div>
+                )}
+                {user.aditionalManager !== "" && (
+                  <div className="h5 row">
+                    <div className="col-xl-6" style={{ color: "#5C7893" }}>
+                      <i className="ni business_briefcase-24 mt-2"></i>Aditional Manager<br />
+                    </div>
+                    <div className="col-xl-6 text-end">
+                      <i className="ni business_briefcase-24 mt-2"></i>{user.aditionalManager}<br />
+                    </div>
+                  </div>
+                )}
+                <div className="h5 row">
+                  <div className="col-xl-6" style={{ color: "#5C7893" }}>
+                    <i className="ni business_briefcase-24 mt-2"></i>Leave<br />
+                  </div>
+                  <div className="col-xl-6 text-end">
+                    <i className="ni business_briefcase-24 mt-2"></i>{user.leaveAvailable} Days Avalailable<br />
                   </div>
                 </div>
               </div>

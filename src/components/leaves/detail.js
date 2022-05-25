@@ -1,8 +1,8 @@
-import { Row, Col, Button, Form } from "react-bootstrap"
+import { Button, Form } from "react-bootstrap"
 import { useDispatch } from 'react-redux'
 
-import { alertSuccess, alertError } from '../../apis/swal';
 import { getLeaves, updateStatus } from "../../store/action";
+import { alertSuccess, alertError } from '../../apis/swal';
 
 export default function DetailComp({ leave, level }) {
   const dispatch = useDispatch()
@@ -25,88 +25,88 @@ export default function DetailComp({ leave, level }) {
           <Form.Label className="col-5">Name</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.User?.fullName}
+            disabled={true}
+            value={leave?.User?.fullName || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Email</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.User?.email}
+            disabled={true}
+            value={leave?.User?.email || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Position</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.User?.position}
+            disabled={true}
+            value={leave?.User?.position || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Reporting Manager</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.User?.reportingManager}
+            disabled={true}
+            value={leave?.User?.reportingManager || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Aditional Manager</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.User?.aditionalManager}
+            disabled={true}
+            value={leave?.User?.aditionalManager || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Type</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.type}
+            disabled={true}
+            value={leave?.type || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Day type</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.dayType}
+            disabled={true}
+            value={leave?.dayType || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Date From</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.dateFrom}
+            disabled={true}
+            value={leave?.dateFrom || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Date To</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.dateTo}
+            disabled={true}
+            value={leave?.dateTo || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Total Days</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.totalDays}
+            disabled={true}
+            value={leave?.totalDays || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
           <Form.Label className="col-5">Reason</Form.Label>
           <Form.Control
             className="col-7"
-            disabled="true"
-            value={leave?.reason}
+            disabled={true}
+            value={leave?.reason || ""}
           />
         </div>
         <div className="row mt-2 d-flex align-items-center">
@@ -121,20 +121,20 @@ export default function DetailComp({ leave, level }) {
           )}
         </div>
         {leave.status === 0 && level === "1" && (
-          <Row className="d-flex justify-content-center" style={{ marginTop: "20px" }}>
-            <Col xs={3}>
+          <div className="row d-flex justify-content-center" style={{ marginTop: "20px" }}>
+            <div className="col-3">
               <Button className="btn d-flex justify-content-center align-items-center bg-blue"
                 onClick={() => handleStatus(leave.id, 1)} >
                 Approved
               </Button>
-            </Col>
-            <Col xs={3}>
+            </div>
+            <div className="col-3">
               <Button className="btn d-flex justify-content-center align-items-center bg-red"
                 onClick={() => handleStatus(leave.id, 2)} >
                 Rejected
               </Button>
-            </Col>
-          </Row>
+            </div>
+          </div>
         )}
       </div>
     </div>

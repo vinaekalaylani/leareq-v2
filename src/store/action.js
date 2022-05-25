@@ -236,7 +236,7 @@ export function getUser(params) {
   };
 }
 
-export function getListUser({ fullName, deleted }) {
+export function getUsers({ fullName, deleted }) {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
       axios({
@@ -332,6 +332,7 @@ export function getLeave(id) {
   };
 }
 
+// done
 export function updateStatus({ status, id }) {
   return (dispatch, getState) => {
     return new Promise((resolve, reject) => {
@@ -345,6 +346,30 @@ export function updateStatus({ status, id }) {
       })
         .then(({data}) => {
           console.log(data)
+          resolve();
+        })
+        .catch((error) => {
+          const { message } = error.response.data;
+          reject(message);
+        })
+        .finally(() => {
+          dispatch(setIsLoading(false));
+        });
+    });
+  };
+}
+
+// done
+export function getHistory({type, status, deleted, year}) {
+  return (dispatch, getState) => {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: "GET",
+        url: `/leave/history?type=${type}&status=${status}&isDeleted=${deleted}&year=${year}`,
+        headers: { access_token: localStorage.getItem("access_token") },
+      })
+        .then(({ data }) => {
+          dispatch(setHistory(data));
           resolve();
         })
         .catch((error) => {

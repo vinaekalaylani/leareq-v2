@@ -14,7 +14,7 @@ export default function Apply() {
   }, [])
 
   return (
-    <div>
+    <div className="d-xl-block d-none">
       <Sidebar/>
       <ApplyComp user={userLogin}/>
     </div>

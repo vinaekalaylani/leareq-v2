@@ -24,7 +24,7 @@ export default function Hompage({ user, event }) {
           <div className="row">
             <div className="col-10">
               <h1 className="display-2 text-white">Hello {user.fullName}</h1>
-              <p className="text-white mt-0 mb-2">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+              <p className="text-white mt-0 mb-2">This is your dashboard page. You can see current leave balances you've or request new leave</p>
             </div>
           </div>
         </div>

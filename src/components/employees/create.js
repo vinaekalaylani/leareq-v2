@@ -46,7 +46,7 @@ export default function ModalCreate({ managers, setShow, show }) {
       .then(() => {
         dispatch(getUsers({ fullName: "", deleted: false }))
         handleClose()
-        alertSuccess("Success")
+        alertSuccess("Successfully freated new employee")
       })
       .catch((err) => {
         alertError(err)

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap"
 import { useDispatch } from "react-redux";
 import { alertError, alertSuccess } from "../../apis/swal";
@@ -7,19 +7,27 @@ import { getUsers, updateUser } from "../../store/action";
 export default function EditComp({ user, managers, setIsEdit }) {
   const dispatch = useDispatch()
 
-  const [fullName, setFullName] = useState(user.fullName || "");
-  const [email, setEmail] = useState(user.email || "");
-  const [password, setPassword] = useState(user.password || "");
-  const [position, setPosition] = useState(user.position || "");
-  const [reportingManager, setReportingManager] = useState(user.reportingManager || "");
-  const [aditionalManager, setAditionalManager] = useState(user.aditionalManager || "");
-  const [leaveAvailable, setLeaveAvailable] = useState(user.leaveAvailable || "");
-  const [level, setLevel] = useState(user.level || "");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [position, setPosition] = useState("");
+  const [reportingManager, setReportingManager] = useState("");
+  const [aditionalManager, setAditionalManager] = useState("");
+  const [leaveAvailable, setLeaveAvailable] = useState("");
+  const [level, setLevel] = useState("");
+
+  useEffect(() => {
+    setFullName(user.fullName)
+    setEmail(user.email)
+    setPosition(user.position)
+    setReportingManager(user.reportingManager)
+    setAditionalManager(user.aditionalManager)
+    setLeaveAvailable(user.leaveAvailable)
+    setLevel(user.level)
+  }, [user])
 
   const handleCancel = () => {
     setFullName("")
     setEmail("")
-    setPassword("")
     setPosition("")
     setReportingManager("")
     setAditionalManager("")
@@ -33,7 +41,6 @@ export default function EditComp({ user, managers, setIsEdit }) {
     const data = {
       fullName,
       email,
-      password,
       position,
       reportingManager,
       aditionalManager,
@@ -45,7 +52,7 @@ export default function EditComp({ user, managers, setIsEdit }) {
       .then(() => {
         dispatch(getUsers({ fullName: "", deleted: false }))
         setIsEdit(false)
-        alertSuccess("Success")
+        alertSuccess("Successfully edited employee")
       })
       .catch((err) => {
         alertError(err)
@@ -71,13 +78,6 @@ export default function EditComp({ user, managers, setIsEdit }) {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
-          <Form.Control
-            className="mb-3"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
           />
           <Form.Control
             className="mb-3"

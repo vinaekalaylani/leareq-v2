@@ -60,7 +60,7 @@ export default function Sidebar() {
                 </li>
                 <li className={`nav-item`}>
                   <Link className="nav-link" to="/histories">
-                    <i className="ni ni-folder-17 text-info"></i> History
+                    <i className="ni ni-folder-17 text-info"></i> Report
                   </Link>
                 </li>
               </>

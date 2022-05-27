@@ -24,7 +24,7 @@ export default function TableComp({ users, setIsEdit }) {
         if (result.isConfirmed) {
           dispatch(deleteUser(id))
             .then(() => {
-              alertSuccess("Success")
+              alertSuccess("Successfully deleted employee")
               dispatch(getUsers({ fullName: "", deleted: false }))
             })
             .catch((err) => {
@@ -33,6 +33,12 @@ export default function TableComp({ users, setIsEdit }) {
         }
       })
   };
+
+  const handleEdit = (id) => {
+    console.log(id)
+    dispatch(getUser(id))
+    setIsEdit(true)
+  }
 
   const handleDetail = state => {
     dispatch(getUser(state.id))
@@ -56,7 +62,7 @@ export default function TableComp({ users, setIsEdit }) {
       }
     },
     {
-      name: 'Position',
+      name: 'Job Title',
       maxWidth: '200px',
       selector: row => row.position,
       sortable: true,
@@ -99,7 +105,7 @@ export default function TableComp({ users, setIsEdit }) {
             <i className="fas fa-ellipsis-v"></i>
           </button>
           <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-            <div className="dropdown-item " onClick={() => setIsEdit(true)}>
+            <div className="dropdown-item " onClick={() => handleEdit(row.id)}>
               <i className="fas fa-edit text-yellow"></i> Edit
             </div>
             <div className="dropdown-item" onClick={() => handleDelete(row.id)}>

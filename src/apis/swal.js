@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 function alertSuccess(message) {
   const data = {
-    title: "Yash!",
+    title: "Success!",
     text: message,
     icon: "success",
     showConfirmButton: false,
@@ -13,7 +13,7 @@ function alertSuccess(message) {
 
 function alertError(message) {
   const data = {
-    title: "Ooof...",
+    title: "Failed",
     text: message,
     icon: "error",
   };

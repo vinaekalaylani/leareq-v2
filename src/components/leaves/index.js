@@ -22,7 +22,7 @@ export default function LeavesComp({ leaves, leave, level }) {
       </div>
       <div className="container-fluid mt--7">
         <div className="row">
-          <div className="col-8 mb-5 mb-xl-0">
+          <div className="col-9 mb-5 mb-xl-0">
             <div className="card shadow">
               <div className="card-header border-0">
                 <h3 className="mb-0">Leave Request</h3>
@@ -34,7 +34,7 @@ export default function LeavesComp({ leaves, leave, level }) {
               </div>
             </div>
           </div>
-          <div className="col-4">
+          <div className="col-3">
             <DetailComp leave={leave} level={level} />
           </div>
         </div>

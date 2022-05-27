@@ -31,7 +31,7 @@ export default function EmployeesComp({ user, users, fullName, deleted, setFullN
       <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div className="container-fluid">
           {/* <!-- Brand --> */}
-          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard / Employee</Link>
+          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard / Employees</Link>
         </div>
       </nav>
       {/* <!-- End Navbar --> */}
@@ -47,7 +47,7 @@ export default function EmployeesComp({ user, users, fullName, deleted, setFullN
               <div className="card-header border-0">
                 <div className="row align-items-center">
                   <div className="col ms-2">
-                    <h3 className="mb-0">Employee</h3>
+                    <h3 className="mb-0">Employees</h3>
                   </div>
                   <div className="col-3 text-right">
                     <Button className="btn btn-sm btn-blue" onClick={() => setShow(true)}>New Employee</Button>

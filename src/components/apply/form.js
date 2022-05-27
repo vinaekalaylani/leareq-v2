@@ -37,7 +37,7 @@ export default function FormComp({ user }) {
     };
     dispatch(apply(data))
       .then(() => {
-        alertSuccess("Success!!")
+        alertSuccess("Your request has been successfully submitted")
         history.push("/")
       })
       .catch((err) => {

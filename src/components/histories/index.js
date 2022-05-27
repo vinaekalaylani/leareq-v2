@@ -17,7 +17,7 @@ export default function HistoriesComp({ history, type, status, deleted, year, se
 
     doc.setFontSize(15);
 
-    const title = "History";
+    const title = "Reporting Leaves";
     const headers = [["Name", "Date From", "Date To", "Type", "Total Days", "Status", "Approved / Rejected By"]];
     const data = history.map(el=> {
       let status = el.status === 0 ? "Pending" : ( el.status === 1 ? "Approved" : "Rejected") 
@@ -43,7 +43,7 @@ export default function HistoriesComp({ history, type, status, deleted, year, se
       <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div className="container-fluid">
           {/* <!-- Brand --> */}
-          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard / History</Link>
+          <Link className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" to="/">Dashboard / Report</Link>
         </div>
       </nav>
       {/* <!-- End Navbar --> */}
@@ -59,7 +59,7 @@ export default function HistoriesComp({ history, type, status, deleted, year, se
               <div className="card-header border-0">
                 <div className="row align-items-center">
                   <div className="col">
-                    <h3 className="mb-0">History</h3>
+                    <h3 className="mb-0">Report</h3>
                   </div>
                   <div className="col text-right">
                     <Button onClick={exportPDF} className="btn btn-sm btn-primary">Print</Button>

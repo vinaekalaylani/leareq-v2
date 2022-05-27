@@ -38,7 +38,7 @@ export default function Login() {
           </Col>
           <Col>
             <div className="d-flex justify-content-center">
-              <h1 className="title-login">LEAREQ</h1>
+              <h1 className="title-login text-blue">LEAREQ</h1>
             </div>
             <div className="d-flex justify-content-center" style={{ marginTop: "3rem" }}>
               <Form onSubmit={handleLogin}>
@@ -49,7 +49,7 @@ export default function Login() {
                   <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
                 <div className="d-flex justify-content-center" style={{ marginTop: "3rem" }}>
-                  <Button type="submit" className="btn-add d-flex justify-content-center align-items-center" style={{ color: "#fff", backgroundColor: "#05499C" }}>LOGIN
+                  <Button type="submit" className="btn d-flex justify-content-center align-items-center bg-blue" style={{ color: "#fff", backgroundColor: "#05499C" }}>LOGIN
                   </Button>
                 </div>
               </Form>

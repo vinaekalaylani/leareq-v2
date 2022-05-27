@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom"
 import { alertSuccess } from '../apis/swal';
-import { getLevel } from "../store/action";
+import { getLevel, setEvent, setLeave, setLeaves, setUser, setUserLogin, setUsers } from "../store/action";
 
 export default function Sidebar() {
   const { level } = useSelector(state => state.userReducer)
@@ -13,6 +13,12 @@ export default function Sidebar() {
   const handleLogout = () => {
     localStorage.removeItem("access_token")
     localStorage.removeItem("level")
+    dispatch(setUserLogin({}))
+    dispatch(setUsers([]))
+    dispatch(setUser({}))
+    dispatch(setLeaves([]))
+    dispatch(setLeave({}))
+    dispatch(setEvent([]))
     alertSuccess("Bye Byeee")
     history.push("/login")
   }

@@ -22,9 +22,9 @@ export default function Hompage({ user, event }) {
         {/* <!-- Header container --> */}
         <div className="container-fluid d-flex align-items-center mt--4">
           <div className="row">
-            <div className="col-10">
+            <div className="col-12">
               <h1 className="display-2 text-white">Hello {user.fullName}</h1>
-              <p className="text-white mt-0 mb-2">This is your dashboard page. You can see current leave balances you've or request new leave</p>
+              <p className="text-white mt-0 mb-1">This is your dashboard page. You can see current leave balances you've or request new leave</p>
             </div>
           </div>
         </div>

@@ -30,7 +30,7 @@ export default function Login() {
         <Row className="login-container" style={{ marginTop: "12rem" }}>
           <Col style={{ marginLeft: "-12px" }}>
             <Image
-              src="/login1.jpg"
+              src="/login.jpg"
               className="image-login"
               width="430px"
               height="600px"
